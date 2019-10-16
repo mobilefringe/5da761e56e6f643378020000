@@ -1,0 +1,334 @@
+<template>
+    <div> <!-- without an outer container div this component template will not render -->
+        <loading-spinner v-if="!dataLoaded"></loading-spinner>
+        <transition name="fade">
+            <div v-if="dataLoaded" v-cloak>
+                <div class="inside_page_header" v-bind:style="{ background: 'linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), #000 url(' + pageBanner.image_url + ') center center' }">
+                    <div class="main_container position_relative">
+                        <h2>{{ currentStore.name }}</h2>
+                    </div>
+                </div>
+                <div class="main_container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <breadcrumb></breadcrumb>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="sidebar">
+                                <!--<img class="store_details_image center-block" :src="currentStore.store_front_url_abs" :alt="currentStore.name + ' Logo'" />-->
+                                <div v-if="currentStore.no_logo" class="store_details_no_logo center-block">
+                                    <div class="no_logo">
+                                        <img class="transparent_logo" src="//codecloud.cdn.speedyrails.net/sites/5b1550796e6f641cab010000/image/png/1536094421888/default_background.png" alt="">
+                                        <p class="store_details_name">{{ currentStore.name }}</p>
+                                    </div>    
+                                </div>
+                                <div id="store_dets_logo_container" v-else>
+                                    <img class="transparent_logo" src="//codecloud.cdn.speedyrails.net/sites/5b1550796e6f641cab010000/image/png/1536094421888/default_background.png" alt="">
+                    			    <img  class="store_details_image" :src="currentStore.store_front_url_abs" alt="">
+                                </div>
+                                <div class="margin_20 center" v-if="currentStore.phone">
+                                    <a class="store_details_phone" :href="'tel:' + currentStore.phone">{{ currentStore.phone }}</a>    
+                                </div>
+                                <div class="margin_20 center" v-if="currentStore.website">
+                                    <a class="store_details_phone" :href="'http://' + currentStore.website" target="_blank">Website</a>
+                                </div>
+                                <ul v-if="storeHours.length > 0" class="store_details_hours_list">
+                                    <li v-for="hour in storeHours" :class="{ today: hour.todays_hours }">
+                                        <div v-if="!hour.is_closed">
+                                            <span class="hours_list_day">{{hour.day_of_week | moment("dddd", timezone)}} </span>
+                                            <span class="hours_list_time">{{hour.open_time | moment("h:mma", timezone)}} - {{hour.close_time | moment("h:mma", timezone)}}</span>
+                                        </div>
+                                        <div v-else>
+                                            <span class="hours_list_day">{{hour.day_of_week | moment("dddd", timezone)}} </span>
+                                            <span class="hours_list_time">CLOSED</span>
+                                        </div>
+                                    </li>
+                                    <li class="hours_vary">*Hours may vary</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div id="map" class="margin_20">
+                                <mapplic-map id="details_map" ref="svgmap_ref" :height="300" :minimap= "false" :deeplinking="false" :sidebar="false" :hovertip="true" :maxscale= "5" :storelist="processedStores" :floorlist="floorList" :svgWidth="2500" :svgHeight="2500" @updateMap="updateSVGMap" :key="currentStore.id"></mapplic-map>
+                                
+                            </div>
+                            <div class=" margin_30 store_details_desc" v-html="currentStore.rich_description"></div>
+                            <div v-if="deliveryAvailable" class="margin_30">
+                                <h3 class="store_details_title">Delivery Options:</h3>
+                                <div class="store_details_delivery">
+                                    <img v-if="hasDoordash" class="delivery_option" src="//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1568400931000/doordash.png" alt="Delivery available with DoorDash" />
+                                    <img v-if="hasGrubhub" class="delivery_option" src="//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1568400381000/grubhub.png" alt="Delivery available with Grubhub" />
+                                    <img v-if="hasPostmates" class="delivery_option" src="//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1569270191004/postmates.png" alt="Delivery available with Postmates" />
+                                    <div v-if="hasRestaurantDelivery" class="delivery_option"><span>Restaurant Delivery</span></div>
+                                    <img v-if="hasUberEats" class="delivery_option" src="//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1568400422000/ubereats.png" alt="Delivery available with Uber Eats" />
+                                    
+                                </div>
+                            </div>
+                            <div v-if="currentStore.events">
+                                <h3 class="store_details_title">Current Events</h3>
+                                <div class="row margin_40">
+                                    <div class="col-md-6" v-if="storeEvents" v-for="item in storeEvents">
+                                        <div class="feature_item_container">
+                                	        <router-link class="tile" :to="{ name: 'eventDetails', params: { id: item.slug }}">
+                                    			<img :src="item.image_url" :alt="item.name">
+                                				<div class="details">
+                        					    	<span class="title">
+                        					            <h3>{{ item.name }}</h3>
+                    					            </span>
+                            					    <span class="info">
+                        					            <p><span v-if="isMultiDay(item)">{{ item.start_date | moment("MMMM D", timezone)}} - {{ item.end_date | moment("MMMM D", timezone)}}</span><span v-else>{{ item.start_date | moment("MMMM D", timezone)}}</span></p>
+                        					            <p>View Promotion Details <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
+                    					            </span>
+                                				</div>
+                                    		</router-link>
+                                	    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-if="currentStore.promotions">
+                                <h3 class="store_details_title">Current Promotions</h3>  
+                                <div class="row margin_40">
+                                    <div class="col-md-6" v-if="storePromotions" v-for="item in storePromotions">
+                                        <div class="feature_item_container">
+                                	        <router-link class="tile" :to="{ name: 'promoDetails', params: { id: item.slug }}">
+                                    			<img :src="item.image_url" :alt="item.name">
+                                				<div class="details">
+                        					    	<span class="title">
+                        					            <h3>{{ item.name }}</h3>
+                    					            </span>
+                            					    <span class="info">
+                        					            <p><span v-if="isMultiDay(item)">{{ item.start_date | moment("MMMM D", timezone)}} - {{ item.end_date | moment("MMMM D", timezone)}}</span><span v-else>{{ item.start_date | moment("MMMM D", timezone)}}</span></p>
+                        					            <p>View Promotion Details <i class="fa fa-angle-double-right" aria-hidden="true"></i></p>
+                    					            </span>
+                                				</div>
+                                    		</router-link>
+                                	    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                		            <router-link class="pull-right" to="/stores">
+                		                <div class="animated_btn">Back to Directory</div>    
+                		            </router-link>
+                		        </div>
+                		    </div>
+                        </div>
+                        <div class="margin_60 clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</template>
+
+<style>
+    #details_map .mapplic-popup-link {
+        display: none !important;
+    }
+</style>
+
+<script>
+    define(["Vue", "vuex", "moment", "vue!mapplic-map"], function (Vue, Vuex, moment, MapplicComponent) {
+        return Vue.component("store-details-component", {
+            template: template, // the variable template will be injected,
+            props: ['id'],
+            data: function () {
+                return {
+                    dataLoaded: false,
+                    pageBanner: null,
+                    currentStore: null,
+                    storeHours: null,
+                    map: null,
+                    storeEvents: null,
+                    storePromotions: null,
+                    deliveryAvailable: false,
+                    hasDoordash: false,
+                    hasGrubhub: false,
+                    hasPostmates: false,
+                    hasRestaurantDelivery: false,
+                    hasUberEats: false
+                }
+            },
+            props:['id'],
+            created (){
+                this.loadData().then(response => {
+                    var temp_repo = this.findRepoByName('Stores Banner');
+                    if (temp_repo !== null && temp_repo !== undefined) {
+                       temp_repo = temp_repo.images;
+                       this.pageBanner = temp_repo[0];
+                    } else {
+                        this.pageBanner = {
+                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png"
+                        }
+                    }
+                    
+                    this.updateCurrentStore(this.id);
+                    this.getSVGMap
+                    
+                    this.dataLoaded = true;
+                });
+            },
+            watch: {
+                $route: function () {
+                    this.updateCurrentStore(this.$route.params.id);
+                }
+            },
+            computed: {
+                ...Vuex.mapGetters([
+                    'property',
+                    'timezone',
+                    'processedStores',
+                    'findStoreBySlug',
+                    'findHourById',
+                    'findPromoById',
+                    'findEventById',
+                    'findCouponById',
+                    'findRepoByName'
+                ]),
+                // allStores() {
+                //     this.processedStores.map(function(store){
+                //         store.zoom = 1;
+                //     })
+                //     return this.processedStores;
+                // },
+                svgMapRef() {
+                    return this.$refs.svgmap_ref;
+                },
+                getSVGMap () {
+                    var mapURL = "https://www.mallmaverick.com" + this.property.svgmap_url.split("?")[0];
+                    return mapURL
+                },
+                floorList () {
+                    var floor_list = [];
+                    var floor_1 = {};
+                    floor_1.id = "first-floor";
+                    floor_1.title = "Level One";
+                    floor_1.map = this.getSVGMap;
+                    floor_1.z_index = null;
+                    floor_1.show = true;
+                    floor_list.push(floor_1);
+                    return floor_list;
+                }
+            },
+            methods: {
+                loadData: async function () {
+                    try {
+                        let results = await Promise.all([
+                            this.$store.dispatch("getData", "stores"), 
+                            this.$store.dispatch("getData","events"), 
+                            this.$store.dispatch("getData","promotions"), 
+                            this.$store.dispatch("getData", "repos")
+                        ]);
+                    } catch (e) {
+                        console.log("Error loading data: " + e.message);
+                    }
+                },
+                updateCurrentStore(id) {
+                    this.currentStore = this.findStoreBySlug(id);
+                    if (this.currentStore === null || this.currentStore === undefined) {
+                        this.$router.replace({ name: 'stores' });
+                    } else {
+                        // LOGO
+                        if (_.includes(this.currentStore.store_front_url_abs, 'missing')) {
+                            this.currentStore.no_logo = true
+                        } else {
+                            this.currentStore.no_logo = false
+                        }
+                        
+                        //MAP
+                        this.currentStore.zoom = 1;
+                        
+                        // HOURS
+                        var vm = this;
+                        var storeHours = [];
+                        _.forEach(this.currentStore.store_hours, function (value, key) {
+                            hours = vm.findHourById(value)
+                            today = moment().day();
+                            if( today == hours.day_of_week ){
+                                hours.todays_hours = true;
+                            } else {
+                                hours.todays_hours = false;
+                            }
+                            storeHours.push(hours);
+                        });
+                        this.storeHours = _.sortBy(storeHours, function(o) { return o.day_of_week });
+                        
+                        // DELIVERY
+                        var delivery_category = 7762;
+                        var categories = this.currentStore.categories;
+                        var subcategories = this.currentStore.subcategories;
+                        if (_.includes(categories, delivery_category) && !_.isEmpty(subcategories)) {
+                            this.deliveryAvailable = true;
+                            if (_.includes(subcategories, 7763)) {
+                                this.hasUberEats = true;
+                            }
+                            if (_.includes(subcategories, 7764)) {
+                                this.hasDoordash = true;
+                            }
+                            if (_.includes(subcategories, 7765)) {
+                                this.hasGrubhub = true;
+                            }
+                            if (_.includes(subcategories, 7766)) {
+                                this.hasPostmates = true;   
+                            }
+                            if (_.includes(subcategories, 7767)) {
+                                this.hasRestaurantDelivery = true;   
+                            }
+                        }
+                        
+                        //PROMOS
+                        var vm = this;
+                        var temp_promo = [];
+                        _.forEach(this.currentStore.promotions, function(value, key) {
+                            var current_promo = vm.findPromoById(value);
+                            
+                            if (_.includes(current_promo.image_url, 'missing')) {
+                                current_promo.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png";
+                            }
+    
+                            temp_promo.push(current_promo);
+                        }); 
+                        this.storePromotions = temp_promo;
+    
+                        // EVENTS
+                        var vm = this;
+                        var temp_event = [];
+                        _.forEach(this.currentStore.events, function(value, key) {
+                            var current_event = vm.findEventById(value);
+                            
+                            if (_.includes(current_event.image_url, 'missing')) {
+                                current_event.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png";
+                            }
+    
+                            temp_event.push(current_event);
+                        }); 
+                        this.storeEvents = temp_event;
+                    }
+                    
+                    this.$breadcrumbs[1].meta.breadcrumb = this.currentStore.name
+                },
+                updateSVGMap(map) {
+                    this.map = map;
+                    this.svgMapRef.showLocation(this.currentStore.svgmap_region);
+                    this.svgMapRef.addActiveClass(this.currentStore.svgmap_region);
+                },
+                dropPin(store) {
+                    this.svgMapRef.showLocation(store.svgmap_region);
+                },
+                isMultiDay(item) {
+                    var timezone = this.timezone
+                    var start_date = moment(item.start_date).tz(timezone).format("MM-DD-YYYY")
+                    var end_date = moment(item.end_date).tz(timezone).format("MM-DD-YYYY")
+                    if (start_date === end_date) {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+            }
+        });
+    });
+</script>
