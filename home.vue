@@ -22,9 +22,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            
-                            <!--to display on current-->
+
                             <div v-else-if="!banner.url">
                                 <div class="banner_image" v-bind:style="{ backgroundImage: 'url(' + banner.image_url + ')' }"></div>
                             </div>
