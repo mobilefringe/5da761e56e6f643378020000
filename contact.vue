@@ -14,7 +14,7 @@
                             <breadcrumb></breadcrumb>
                         </div>
                     </div>
-                    <!--<div class="row" v-if="main.length > 0">-->
+                    <div class="row" v-if="main.length > 0">
                     <div class="row">
                         <div class="col-md-12">
                             <div  class="margin_60" v-html="main.body"></div>
