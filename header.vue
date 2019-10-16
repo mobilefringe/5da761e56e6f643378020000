@@ -23,7 +23,7 @@
                         <!--hardcoded-->
                         <div class="site_logo center-block" :class="{ mini_logo: scrollY }">
                             <a href="/">
-                                <img :alt="siteInfo.siteName" src="//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1571254005000/logo.png">
+                                <img :alt="siteInfo.siteName" src="//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1571251694000/pp_600x180_logo.png">
                             </a>
                         </div>
                         
