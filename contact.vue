@@ -112,15 +112,15 @@
             },
             created() {
                 this.loadData().then(response => {
-                    // var temp_repo = this.findRepoByName('Contact Us Banner');
-                    // if (temp_repo !== null && temp_repo !== undefined) {
-                    //   temp_repo = temp_repo.images;
-                    //   this.pageBanner = temp_repo[0];
-                    // } else {
+                    var temp_repo = this.findRepoByName('Contact Us Banner');
+                    if (temp_repo !== null && temp_repo !== undefined) {
+                      temp_repo = temp_repo.images;
+                      this.pageBanner = temp_repo[0];
+                    } else {
                         this.pageBanner = {
                             "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/jpeg/1571250861000/pp_contact_1920x300.jpg"
                         }
-                    // }
+                    }
                     
                     if (response && response[0]) {
                         this.main = response[0].data
