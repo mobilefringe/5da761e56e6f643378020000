@@ -72,14 +72,14 @@
             },
             created() {
                 this.loadData().then(response => {
-                    // var temp_repo = this.findRepoByName('Jobs Banner').images;
-                    // if (temp_repo != null) {
-                    //     this.pageBanner = temp_repo[0];
-                    // } else {
+                    var temp_repo = this.findRepoByName('Jobs Banner').images;
+                    if (temp_repo != null) {
+                        this.pageBanner = temp_repo[0];
+                    } else {
                         this.pageBanner = {
                             "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045469000/rivermark_inside_banner.png"
                         }
-                    // }
+                    }
 
                     this.dataLoaded = true;
                 });
