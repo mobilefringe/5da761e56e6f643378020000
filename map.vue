@@ -77,15 +77,13 @@
             },
             created (){
                 this.loadData().then(response => {
-                    
-                    // uncomment for dynamic 
-                    // var temp_repo = this.findRepoByName('Map Banner').images;
-                    // if(temp_repo != null) {
-                    //     this.pageBanner = temp_repo[0];
-                    // } else {
+                    var temp_repo = this.findRepoByName('Map Banner').images;
+                    if(temp_repo != null) {
+                        this.pageBanner = temp_repo[0];
+                    } else {
                         this.pageBanner = {
-                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/jpeg/1571250862000/pp_centermap_1920x300.jpg"
-                        // }
+                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5d700e9c6e6f647c7f750000/image/jpeg/1529532304000/insidebanner2.jpg"
+                        }
                     }
                     this.getSVGMap;
                     this.dataLoaded = true;
