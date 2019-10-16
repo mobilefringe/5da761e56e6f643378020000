@@ -130,7 +130,7 @@
                        this.pageBanner = temp_repo[0];
                     } else {
                          this.pageBanner = {
-                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/jpeg/1571250862000/pp_dining_1920x300.jpg"
+                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045469000/rivermark_inside_banner.png"
                         }
                     }
                     this.dataLoaded = true;
