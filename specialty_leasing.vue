@@ -54,14 +54,14 @@
             },
             created() {
                 this.loadData().then(response => {
-                    // var temp_repo = this.findRepoByName('Specialty Leasing Banner');
-                    // if(temp_repo != null && temp_repo !==undefined) {
-                    //     this.pageBanner = temp_repo.images[0];
-                    // } else {
+                    var temp_repo = this.findRepoByName('Specialty Leasing Banner');
+                    if(temp_repo != null && temp_repo !==undefined) {
+                        this.pageBanner = temp_repo.images[0];
+                    } else {
                         this.pageBanner = {
-                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/jpeg/1571250863000/pp_leasing_1920x300.jpg"
+                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png"
                         }
-                    // }
+                    }
                     
                     var temp_repo1 = this.findRepoByName('Leasing Booklet');
                     if(temp_repo1) {
