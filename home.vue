@@ -9,7 +9,10 @@
                     <slick ref="slick" :options="slickOptions">
                         <div v-if="homeBanners" v-for="banner in homeBanners">
                             <div v-if="banner.name && banner.description" class="banner_height">
-                                <div class="banner_image" v-bind:style="{ backgroundImage: 'url(' + banner.image_url + ')' }"></div>
+                                <div class="banner_image">
+                                    <img src="//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/jpeg/1571250863000/pp_home_1920x470.jpg"/>
+                                    
+                                </div>
                                 <div class="banner_content_container">
                                     <div class="banner_content">
                                         <span v-if="banner.heading" class="banner_heading">{{ banner.heading }}</span>
@@ -217,7 +220,7 @@
                         var showOnWebDate = moment.tz(value.show_on_web_date, this.timezone).format();
                         if (today >= showOnWebDate) {
                             if (_.includes(value.image_url, 'missing')) {
-                                value.image_url = "//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1570045481000/rivermark_placeholder_images.png";
+                                value.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png";
                             }
                             // Sort Featured Promotions
                             if (value.is_featured) {
@@ -243,7 +246,7 @@
                         var showOnWebDate = moment.tz(value.show_on_web_date, this.timezone).format();
                         if (today >= showOnWebDate) {
                             if (_.includes(value.image_url, 'missing')) {
-                                value.image_url = "//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1570045481000/rivermark_placeholder_images.png";
+                                value.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png";
                             }
                             // Sort Featured Events
                             if (value.is_featured) {
@@ -274,7 +277,7 @@
                             this.$store.dispatch("getData", "banners"), 
                             this.$store.dispatch("getData","promotions"), 
                             this.$store.dispatch("getData", "events"), 
-                            this.$store.dispatch('LOAD_PAGE_DATA', { url: "https://rivermark.mallmaverick.com/api/v4/rivermark/social.json" })
+                            this.$store.dispatch('LOAD_PAGE_DATA', { url: "https://pacificpearl.mallmaverick.com/api/v4/pacificpearl/social.json" })
                         ]);
                         return results;
                     } catch(e) {
