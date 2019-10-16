@@ -190,25 +190,33 @@
                 ]),
                 homeBanners() {
                     var banners = [];
-                    
-                    _.forEach(this.$store.state.banners, function (value, key) {
-                        var today = new Date();
-                        var start = new Date (value.start_date);
-                        if (start <= today){
-                            if (value.end_date){
-                                var end = new Date (value.end_date);
-                                if (end >= today){
-                                    banners.push(value);  
-                                }
-                            } else {
-                                banners.push(value);
-                            }
+
+                    // for dynamic                     
+                    // _.forEach(this.$store.state.banners, function (value, key) {
+                    //     var today = new Date();
+                    //     var start = new Date (value.start_date);
+                    //     if (start <= today){
+                    //         if (value.end_date){
+                    //             var end = new Date (value.end_date);
+                    //             if (end >= today){
+                    //                 banners.push(value);  
+                    //             }
+                    //         } else {
+                    //             banners.push(value);
+                    //         }
                             
-                            if (value.cms_fields.subheader) {
-                                value.heading = value.cms_fields.subheader;
-                            }
-                        }
-                    });
+                    //         if (value.cms_fields.subheader) {
+                    //             value.heading = value.cms_fields.subheader;
+                    //         }
+                    //     }
+                    // });
+                    
+                    // hardcoded 
+                    var banners = [{
+                        image_url: '//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/jpeg/1571250863000/pp_home_1920x470.jpg',
+                        // name:
+                        // description: 
+                    }]
                     
                     return banners
                 },
