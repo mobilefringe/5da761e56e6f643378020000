@@ -113,6 +113,7 @@
             },
             created (){
                 this.loadData().then(response => {
+                    // uncomment for dynamic 
                     // var temp_repo = this.findRepoByName('Events Banner').images;
                     // if(temp_repo != null) {
                     //     this.pageBanner = temp_repo[0];
