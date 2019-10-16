@@ -61,15 +61,15 @@
             },
             created() {
                 this.loadData().then(response => {
-                    // var repo = this.findRepoByName('Location Banner');
-                    // if (repo !== null && repo !== undefined) {
-                    //   repo = repo.images;
-                    //   this.pageBanner = repo[0];
-                    // } else {
+                    var repo = this.findRepoByName('Location Banner');
+                    if (repo !== null && repo !== undefined) {
+                       repo = repo.images;
+                       this.pageBanner = repo[0];
+                    } else {
                         this.pageBanner = {
-                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/jpeg/1571250863000/pp_location_1920x300.jpg"
+                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045469000/rivermark_inside_banner.png"
                         }
-                    // }
+                    }
                     
                     var temp_repo = this.findRepoByName('Location Images');
                     if (temp_repo) {
