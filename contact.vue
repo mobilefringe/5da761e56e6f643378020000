@@ -88,7 +88,7 @@
         font-size: 0.8rem;
         line-height: 1.5rem;
         margin:auto;
-        color:$primary;
+        color: #da3a26;
     }
 </style>
 <script>
