@@ -87,7 +87,7 @@
                         this.pageBanner = temp_repo.images[0];
                     } else {
                         this.pageBanner = {
-                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045469000/rivermark_inside_banner.png"
+                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1571339215000/pearl_banner.png"
                         }
                     }
                     
