@@ -63,15 +63,15 @@
                         }
                     }
                     
-                    var temp_repo1 = this.findRepoByName('Leasing Booklet');
-                    if(temp_repo1) {
-                        this.leasingBooklet = temp_repo1.images[0].image_url;
-                    }
+                    // var temp_repo1 = this.findRepoByName('Leasing Booklet');
+                    // if(temp_repo1) {
+                    //     this.leasingBooklet = temp_repo1.images[0].image_url;
+                    // }
 
-                    var temp_repo2 = this.findRepoByName('Leasing Images');
-                    if(temp_repo2) {
-                        this.pageImages = temp_repo2.images;
-                    }
+                    // var temp_repo2 = this.findRepoByName('Leasing Images');
+                    // if(temp_repo2) {
+                    //     this.pageImages = temp_repo2.images;
+                    // }
 
                     if(response && response[0]){
                         this.main = response[0].data;
