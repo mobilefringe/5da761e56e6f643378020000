@@ -189,30 +189,6 @@
                     'findCouponById',
                     'findRepoByName'
                 ]),
-                // allStores() {
-                //     this.processedStores.map(function(store){
-                //         store.zoom = 1;
-                //     })
-                //     return this.processedStores;
-                // },
-                // svgMapRef() {
-                //     return this.$refs.svgmap_ref;
-                // },
-                // getSVGMap () {
-                //     var mapURL = "https://www.mallmaverick.com" + this.property.svgmap_url.split("?")[0];
-                //     return mapURL
-                // },
-                // floorList () {
-                //     var floor_list = [];
-                //     var floor_1 = {};
-                //     floor_1.id = "first-floor";
-                //     floor_1.title = "Level One";
-                //     floor_1.map = this.getSVGMap;
-                //     floor_1.z_index = null;
-                //     floor_1.show = true;
-                //     floor_list.push(floor_1);
-                //     return floor_list;
-                // }
                 getPNGurl () {
                     return "https://www.mallmaverick.com" + this.property.map_url;
                 },
@@ -250,123 +226,22 @@
                         console.log("Error loading data: " + e.message);
                     }
                 },
-                // updateCurrentStore(id) {
-                //     this.currentStore = this.findStoreBySlug(id);
-                //     if (this.currentStore === null || this.currentStore === undefined) {
-                //         this.$router.replace({ name: 'stores' });
-                //     } else {
-                //         // LOGO
-                //         if (_.includes(this.currentStore.store_front_url_abs, 'missing')) {
-                //             this.currentStore.no_logo = true
-                //         } else {
-                //             this.currentStore.no_logo = false
-                //         }
-                        
-                //         //MAP
-                //         this.currentStore.zoom = 1;
-                        
-                //         // HOURS
-                //         var vm = this;
-                //         var storeHours = [];
-                //         _.forEach(this.currentStore.store_hours, function (value, key) {
-                //             hours = vm.findHourById(value)
-                //             today = moment().day();
-                //             if( today == hours.day_of_week ){
-                //                 hours.todays_hours = true;
-                //             } else {
-                //                 hours.todays_hours = false;
-                //             }
-                //             storeHours.push(hours);
-                //         });
-                //         this.storeHours = _.sortBy(storeHours, function(o) { return o.day_of_week });
-                        
-                //         // DELIVERY
-                //         var delivery_category = 7762;
-                //         var categories = this.currentStore.categories;
-                //         var subcategories = this.currentStore.subcategories;
-                //         if (_.includes(categories, delivery_category) && !_.isEmpty(subcategories)) {
-                //             this.deliveryAvailable = true;
-                //             if (_.includes(subcategories, 7763)) {
-                //                 this.hasUberEats = true;
-                //             }
-                //             if (_.includes(subcategories, 7764)) {
-                //                 this.hasDoordash = true;
-                //             }
-                //             if (_.includes(subcategories, 7765)) {
-                //                 this.hasGrubhub = true;
-                //             }
-                //             if (_.includes(subcategories, 7766)) {
-                //                 this.hasPostmates = true;   
-                //             }
-                //             if (_.includes(subcategories, 7767)) {
-                //                 this.hasRestaurantDelivery = true;   
-                //             }
-                //         }
-                        
-                //         //PROMOS
-                //         var vm = this;
-                //         var temp_promo = [];
-                //         _.forEach(this.currentStore.promotions, function(value, key) {
-                //             var current_promo = vm.findPromoById(value);
-                            
-                //             if (_.includes(current_promo.image_url, 'missing')) {
-                //                 current_promo.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png";
-                //             }
-    
-                //             temp_promo.push(current_promo);
-                //         }); 
-                //         this.storePromotions = temp_promo;
-    
-                //         // EVENTS
-                //         var vm = this;
-                //         var temp_event = [];
-                //         _.forEach(this.currentStore.events, function(value, key) {
-                //             var current_event = vm.findEventById(value);
-                            
-                //             if (_.includes(current_event.image_url, 'missing')) {
-                //                 current_event.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png";
-                //             }
-    
-                //             temp_event.push(current_event);
-                //         }); 
-                //         this.storeEvents = temp_event;
-                //     }
-                    
-                //     this.$breadcrumbs[1].meta.breadcrumb = this.currentStore.name
-                // },
-                // updateSVGMap(map) {
-                //     this.map = map;
-                //     this.svgMapRef.showLocation(this.currentStore.svgmap_region);
-                //     this.svgMapRef.addActiveClass(this.currentStore.svgmap_region);
-                // },
-                // dropPin(store) {
-                //     this.svgMapRef.showLocation(store.svgmap_region);
-                // },
-                // isMultiDay(item) {
-                //     var timezone = this.timezone
-                //     var start_date = moment(item.start_date).tz(timezone).format("MM-DD-YYYY")
-                //     var end_date = moment(item.end_date).tz(timezone).format("MM-DD-YYYY")
-                //     if (start_date === end_date) {
-                //         return false
-                //     } else {
-                //         return true
-                //     }
-                // }
                 updateCurrentStore(id) {
                     this.currentStore = this.findStoreBySlug(id);
                     if (this.currentStore === null || this.currentStore === undefined) {
                         this.$router.replace({ name: 'stores' });
-                    }
-                    else {
+                    } else {
+                        // LOGO
                         if (_.includes(this.currentStore.store_front_url_abs, 'missing')) {
                             this.currentStore.no_logo = true
                         } else {
                             this.currentStore.no_logo = false
                         }
-                        // if (_.includes(this.currentStore.store_front_url_abs, 'missing')) {
-                        //     this.currentStore.store_front_url_abs = this.property.default_logo;
-                        // }
                         
+                        //MAP
+                        this.currentStore.zoom = 1;
+                        
+                        // HOURS
                         var vm = this;
                         var storeHours = [];
                         _.forEach(this.currentStore.store_hours, function (value, key) {
@@ -380,45 +255,59 @@
                             storeHours.push(hours);
                         });
                         this.storeHours = _.sortBy(storeHours, function(o) { return o.day_of_week });
-                    
+                        
+                        // DELIVERY
+                        var delivery_category = 7762;
+                        var categories = this.currentStore.categories;
+                        var subcategories = this.currentStore.subcategories;
+                        if (_.includes(categories, delivery_category) && !_.isEmpty(subcategories)) {
+                            this.deliveryAvailable = true;
+                            if (_.includes(subcategories, 7763)) {
+                                this.hasUberEats = true;
+                            }
+                            if (_.includes(subcategories, 7764)) {
+                                this.hasDoordash = true;
+                            }
+                            if (_.includes(subcategories, 7765)) {
+                                this.hasGrubhub = true;
+                            }
+                            if (_.includes(subcategories, 7766)) {
+                                this.hasPostmates = true;   
+                            }
+                            if (_.includes(subcategories, 7767)) {
+                                this.hasRestaurantDelivery = true;   
+                            }
+                        }
+                        
+                        //PROMOS
                         var vm = this;
                         var temp_promo = [];
                         _.forEach(this.currentStore.promotions, function(value, key) {
                             var current_promo = vm.findPromoById(value);
                             
                             if (_.includes(current_promo.image_url, 'missing')) {
-                                current_promo.image_url = "//codecloud.cdn.speedyrails.net/sites/5d6ed6ba6e6f64624d0c0000/image/png/1554995111000/miramesa_default.png";
+                                current_promo.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png";
                             }
     
                             temp_promo.push(current_promo);
                         }); 
                         this.storePromotions = temp_promo;
     
+                        // EVENTS
                         var vm = this;
                         var temp_event = [];
                         _.forEach(this.currentStore.events, function(value, key) {
                             var current_event = vm.findEventById(value);
                             
                             if (_.includes(current_event.image_url, 'missing')) {
-                                current_event.image_url = "//codecloud.cdn.speedyrails.net/sites/5d6ed6ba6e6f64624d0c0000/image/png/1554995111000/miramesa_default.png";
+                                current_event.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png";
                             }
     
                             temp_event.push(current_event);
                         }); 
                         this.storeEvents = temp_event;
-                        
-                        var vm = this;
-                        var temp_coupon = [];
-                        _.forEach(this.currentStore.coupons, function(value, key) {
-                            var current_coupon = vm.findCouponById(value);
-                            // if (_.includes(current_coupon.image_url, 'missing')) {
-                            //     current_coupon.image_url = "http://placehold.it/1560x800/757575";
-                            // }
-    
-                            temp_coupon.push(current_coupon);
-                        }); 
-                        // this.storeCoupons = temp_coupon;
                     }
+                    
                     this.$breadcrumbs[1].meta.breadcrumb = this.currentStore.name
                 },
                 updatePNGMap(map) {
