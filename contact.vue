@@ -125,9 +125,9 @@
                     if (response && response[0]) {
                         this.main = response[0].data
                         console.log(this.main)
-                        // if(response[0].data && response[0].data.subpages){
-                        //   this.contactInfo = response[0].data.subpages[0];
-                        // }
+                        if(response[0].data && response[0].data.subpages){
+                          this.contactInfo = response[0].data.subpages[0];
+                        }
                     }
                     this.dataLoaded = true;
                 });
