@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-md-9">
                             <!--<mapplic-map ref="mapplic_ref" :svgWidth="2500" :svgHeight="2500" :height="674" :minimap= "false" :deeplinking="false" :sidebar="false" :hovertip="true" :maxscale= "5" :storelist="allStores" :floorlist="floorList" tooltiplabel="View Store Details"></mapplic-map>-->
-                             <mapplic-png-map ref="pngmap_ref" :height="664" :hovertip="true" :storelist="allStores" :floorlist="floorList" :bindLocationOpened="true" :svgWidth="property.map_image_width" :svgHeight="property.map_image_height" :showPin="true" tooltiplabel="View Store Details"></mapplic-png-map>
+                            <mapplic-png-map ref="pngmap_ref" :height="664" :hovertip="true" :storelist="allStores" :floorlist="floorList" :bindLocationOpened="true" :svgWidth="property.map_image_width" :svgHeight="property.map_image_height" :showPin="true" tooltiplabel="View Store Details"></mapplic-png-map>
                         </div>
                     </div>
                 </div>
