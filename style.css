@@ -418,7 +418,7 @@ img{
             display: inline-block;
             box-shadow: none;
             border: 1px solid #000;
-            background: $secondary;
+            background: #000
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             line-height: 1rem;
