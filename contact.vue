@@ -118,7 +118,7 @@
                       this.pageBanner = temp_repo[0];
                     } else {
                         this.pageBanner = {
-                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/jpeg/1571250861000/pp_contact_1920x300.jpg"
+                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1571339215000/pearl_banner.png"
                         }
                     }
                     
@@ -144,7 +144,6 @@
                     try {
                         let results = await Promise.all([
                             this.$store.dispatch('LOAD_PAGE_DATA', { url: this.property.mm_host + "/pages/" + Site.subdomain + "-contact-us.json" }),
-                            // this.$store.dispatch('LOAD_PAGE_DATA', { url: this.property.mm_host + "/pages/" + Site.subdomain + "-location.json" }),
                             this.$store.dispatch("getData", "repos")
                         ]);
 
