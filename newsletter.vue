@@ -13,6 +13,8 @@
                         <div class="col-md-12">
                             <breadcrumb></breadcrumb>
                             <div v-if="pageContent" v-html="pageContent.body"></div>
+                            
+                            
                             <form class="newsletter_form form-horizontal" action="//mobilefringe.createsend.com/t/d/s/mmiky/" method="post">
                                 <div class="row">
                                     <div class="col-sm-6" >
@@ -27,7 +29,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <label for="fieldEmail" class="accessibility">Email</label>
-                                        <input v-model="form_data.email" required class="margin_20 form-control" id="fieldEmail" name="cm-yhidpu-yhidpu" type="email" placeholder="Email" />
+                                        <input v-model="form_data.email" required class="margin_20 form-control" id="fieldEmail" name="cm-mmiky-mmiky" type="email" placeholder="Email" />
                                     </div>
                                 </div>
                                 <div class="row">
