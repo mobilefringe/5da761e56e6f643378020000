@@ -80,6 +80,7 @@
 
                     if (response && response[1]) {
                         this.main = response[1].data;
+                        console.log(this.main)
                         if(response[1].data && response[1].data.subpages && response[1].data.subpages[0]){
                             this.leasingInfo = response[1].data.subpages[0]
                         }
