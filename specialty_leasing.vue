@@ -54,7 +54,7 @@
             },
             created() {
                 this.loadData().then(response => {
-                    var temp_repo = this.findRepoByName('Leasing Banner');
+                    var temp_repo = this.findRepoByName('Specialty Leasing Banner');
                     if(temp_repo != null && temp_repo !==undefined) {
                         this.pageBanner = temp_repo.images[0];
                     } else {
@@ -93,7 +93,7 @@
                 loadData: async function () {
                     this.property.mm_host = this.property.mm_host.replace("http:", "");
                     try {
-                        let results = await Promise.all([this.$store.dispatch("getData", "repos"), this.$store.dispatch('LOAD_PAGE_DATA', {url: this.property.mm_host + "/pages/pop-up-specialty-leasing.json"})]);
+                        let results = await Promise.all([this.$store.dispatch("getData", "repos"), this.$store.dispatch('LOAD_PAGE_DATA', {url: this.property.mm_host + "/pages/landing-pop-up-specialty-leasing.json"})]);
                         return results;
                     } catch (e) {
                         console.log("Error loading data: " + e.message);
