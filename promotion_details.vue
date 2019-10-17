@@ -80,14 +80,14 @@
             },
             created() {
 				this.$store.dispatch("getData", "promotions").then(response => {
-				    // var temp_repo = this.findRepoByName('Events Banner').images;
-        //             if(temp_repo != null) {
-        //                 this.pageBanner = temp_repo[0];
-        //             } else {
+				    var temp_repo = this.findRepoByName('Events Banner').images;
+                    if(temp_repo != null) {
+                        this.pageBanner = temp_repo[0];
+                    } else {
                         this.pageBanner = {
                             "image_url": "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1571339215000/pearl_banner.png"
                         }
-                    // }
+                    }
                     
 					this.currentPromo = this.findPromoBySlug(this.id);
 					if (this.currentPromo === null || this.currentPromo === undefined) {
@@ -100,7 +100,7 @@
                             }
                         } else {
                             if  (_.includes(this.currentPromo.promo_image_url_abs, 'missing')) {
-                                this.currentPromo.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png";    
+                                this.currentPromo.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1571339410000/pearl_default.png";    
                             }
                         }
 					}
