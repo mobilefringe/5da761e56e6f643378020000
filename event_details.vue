@@ -101,7 +101,7 @@
                             }
                         } else {
                             if (_.includes(this.currentEvent.event_image_url_abs, 'missing')) {
-                                this.currentEvent.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1570045481000/rivermark_placeholder_images.png";    
+                                this.currentEvent.image_url = "//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/png/1571339410000/pearl_default.png";    
                             }
                         }
 					}
