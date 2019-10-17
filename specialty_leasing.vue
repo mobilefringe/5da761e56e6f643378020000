@@ -74,7 +74,7 @@
                     }
 
                     if(response && response[1]){
-                        this.main = response[1].data;
+                        this.main = response[0].data;
                         if(response[1].data && response[1].data.subpages && response[1].data.subpages[0]){
                             this.leasingInfo = response[1].data.subpages[0]
                         }
