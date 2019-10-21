@@ -185,7 +185,7 @@
                 },
                 dropDownCats() {
                     var vm = this;
-                    var store_cats = _.filter(this.processedStores, function(o) { return !_.includes(o.categories, vm.dineFilter) && o.store_ids != null});
+                    var store_cats = _.filter(this.processedStores, function(o) { return !_.includes(o.categories, vm.dineFilter)});
                     var cats = [];
                     _.forEach(store_cats, function(value, key) {
                         _.forEach(value.categories, function(category, key) {
