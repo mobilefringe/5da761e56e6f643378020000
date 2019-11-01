@@ -159,7 +159,7 @@ require(['Vue', 'vuex', 'vue2-filters', 'vue_router', 'routes', 'vuex-router-syn
                 social_media: [
                     {
                         name: "Facebook",
-                        url: "https://www.facebook.com/pacificpearlcentere/",
+                        url: "https://www.facebook.com/pacificpearlcenter/",
                         iconClass: "fab fa-facebook"
                     },
                     {
