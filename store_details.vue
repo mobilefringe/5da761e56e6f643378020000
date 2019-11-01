@@ -268,7 +268,7 @@
                             if (_.includes(subcategories, 8228)) {
                                 this.hasDoordash = true;
                             }
-                            if (_.includes(subcategories, 7765)) {
+                            if (_.includes(subcategories, 8229)) {
                                 this.hasGrubhub = true;
                             }
                             if (_.includes(subcategories, 7766)) {
