@@ -271,10 +271,10 @@
                             if (_.includes(subcategories, 8229)) {
                                 this.hasGrubhub = true;
                             }
-                            if (_.includes(subcategories, 7766)) {
+                            if (_.includes(subcategories, 8231)) {
                                 this.hasPostmates = true;   
                             }
-                            if (_.includes(subcategories, 7767)) {
+                            if (_.includes(subcategories, 8232)) {
                                 this.hasRestaurantDelivery = true;   
                             }
                         }
