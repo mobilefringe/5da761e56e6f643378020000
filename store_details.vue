@@ -257,15 +257,15 @@
                         this.storeHours = _.sortBy(storeHours, function(o) { return o.day_of_week });
                         
                         // DELIVERY
-                        var delivery_category = 7762;
+                        var delivery_category = 8227;
                         var categories = this.currentStore.categories;
                         var subcategories = this.currentStore.subcategories;
                         if (_.includes(categories, delivery_category) && !_.isEmpty(subcategories)) {
                             this.deliveryAvailable = true;
-                            if (_.includes(subcategories, 7763)) {
+                            if (_.includes(subcategories, 8230)) {
                                 this.hasUberEats = true;
                             }
-                            if (_.includes(subcategories, 7764)) {
+                            if (_.includes(subcategories, 8228)) {
                                 this.hasDoordash = true;
                             }
                             if (_.includes(subcategories, 7765)) {
