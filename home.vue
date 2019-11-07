@@ -211,7 +211,7 @@
                     
                     // hardcoded 
                     var banners = [{
-                        image_url: '//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/jpeg/1571250863000/pp_home_1920x470.jpg',
+                        image_url: '//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/jpeg/1571250863000/pp_home_1920x470.jpg','//codecloud.cdn.speedyrails.net/sites/5da761e56e6f643378020000/image/jpeg/1573148686000/PP_Holiday819_1920x470_1.jpg',
                         // name:
                         // description: 
                     }]
