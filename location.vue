@@ -22,7 +22,7 @@
                 </div>
                 <div class="main_container">
                     <div class="location_map">
-                        <iframe title="Google Map for Pacific Pearl." :src="propertyAddress()" width="100%" height="490" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        <iframe aria-hidden="true" title="Google Map for Pacific Pearl." :src="propertyAddress()" width="100%" height="490" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="main_container">
