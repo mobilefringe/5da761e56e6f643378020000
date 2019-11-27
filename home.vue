@@ -179,8 +179,7 @@
                             insta.caption.text = _.truncate(insta.caption.text, { 'length': 60, 'separator': ' ' });
                         }
                     });
-                    
-                    
+                    this.meta = this.findMetaDataByPath(this.$route.path);
                     this.dataLoaded = true;  
                 });
             },
@@ -194,7 +193,6 @@
                 ]),
                 homeBanners() {
                     var banners = [];
-
                     // for dynamic                     
                     _.forEach(this.$store.state.banners, function (value, key) {
                         var today = new Date();
@@ -214,14 +212,6 @@
                             }
                         }
                     });
-                    
-                    // hardcoded 
-                    // var banners = [{
-                    //     image_url: '//codecloud.cdn.speedyrails.net/sites/5ddeafc56e6f6416db790000/image/jpeg/1571250863000/pp_home_1920x470.jpg',
-                    //     // name:
-                    //     // description: 
-                    // }]
-                    
                     return banners
                 },
                 featuredItems() {
