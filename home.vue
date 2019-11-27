@@ -160,7 +160,13 @@
                         nextArrow: '.insta_next',
                         prevArrow: '.insta_prev'
                     },
-                    instaFeed: null
+                    instaFeed: null,
+                    meta: {
+                       meta_title: "",
+                       meta_description: "",
+                       meta_keywords: "",
+                       meta_image: ""
+                    }
                 }
             },
             created(){
