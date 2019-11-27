@@ -12,16 +12,11 @@
                                 </a>
                             </span>
                         </div>
-                        
-                     
                         <div class="site_logo center-block" :class="{ mini_logo: scrollY }">
                             <a href="/">
                                 <img :alt="siteInfo.siteName" :src="siteInfo.siteLogo">
                             </a>
                         </div>
-                        
-                       
-                        
                         <div @click="showMenu = !showMenu" :class="{ open: showMenu }" id="menu-icon">
                             <span></span>
                             <span></span>
