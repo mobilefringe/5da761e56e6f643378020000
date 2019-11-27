@@ -57,7 +57,7 @@
                             </div>
                             <div class=" margin_30 store_details_desc" v-html="currentStore.rich_description"></div>
                             <div v-if="deliveryAvailable" class="margin_30">
-                                <h3 class="store_details_title">Delivery Options:</h3>
+                                <h2 class="store_details_title">Delivery Options:</h2>
                                 <div class="store_details_delivery">
                                     <img v-if="hasDoordash" class="delivery_option" src="//codecloud.cdn.speedyrails.net/sites/5ddeafc56e6f6416db790000/image/png/1568400931000/doordash.png" alt="Delivery available with DoorDash" />
                                     <img v-if="hasGrubhub" class="delivery_option" src="//codecloud.cdn.speedyrails.net/sites/5ddeafc56e6f6416db790000/image/png/1568400381000/grubhub.png" alt="Delivery available with Grubhub" />
@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                             <div v-if="currentStore.events">
-                                <h3 class="store_details_title">Current Events</h3>
+                                <h2 class="store_details_title">Current Events</h2>
                                 <div class="row margin_40">
                                     <div class="col-md-6" v-if="storeEvents" v-for="item in storeEvents">
                                         <div class="feature_item_container">
@@ -76,7 +76,7 @@
                                     			<img :src="item.image_url" :alt="item.name">
                                 				<div class="details">
                         					    	<span class="title">
-                        					            <h3>{{ item.name }}</h3>
+                        					            <h2>{{ item.name }}</h2>
                     					            </span>
                             					    <span class="info">
                         					            <p><span v-if="isMultiDay(item)">{{ item.start_date | moment("MMMM D", timezone)}} - {{ item.end_date | moment("MMMM D", timezone)}}</span><span v-else>{{ item.start_date | moment("MMMM D", timezone)}}</span></p>
@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             <div v-if="currentStore.promotions">
-                                <h3 class="store_details_title">Current Promotions</h3>  
+                                <h2 class="store_details_title">Current Promotions</h2>  
                                 <div class="row margin_40">
                                     <div class="col-md-6" v-if="storePromotions" v-for="item in storePromotions">
                                         <div class="feature_item_container">
@@ -97,7 +97,7 @@
                                     			<img :src="item.image_url" :alt="item.name">
                                 				<div class="details">
                         					    	<span class="title">
-                        					            <h3>{{ item.name }}</h3>
+                        					            <h2>{{ item.name }}</h2>
                     					            </span>
                             					    <span class="info">
                         					            <p><span v-if="isMultiDay(item)">{{ item.start_date | moment("MMMM D", timezone)}} - {{ item.end_date | moment("MMMM D", timezone)}}</span><span v-else>{{ item.start_date | moment("MMMM D", timezone)}}</span></p>
