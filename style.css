@@ -709,7 +709,7 @@ img{
                 transform: translate(-50%, -50%);
                 font-size: 0.875rem;
                 line-height: normal;
-                color: #fff;
+                color: #000;
                 text-align: center;
             }
             .insta_user {
@@ -719,7 +719,7 @@ img{
                 left: 10px;
                 font-size: 0.875rem;
                 line-height: normal;
-                color: #fff;
+                color: #000;
             }
             .insta_icon {
                 position: absolute;
@@ -727,8 +727,7 @@ img{
                 bottom: 10px;
                 font-size: 1.038rem;
                 line-height: normal;
-                color: #fff;
-            }
+                color: #000
         }
         a:hover {
             .insta_content {
