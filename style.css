@@ -738,7 +738,7 @@ img{
                 visibility: visible;
                 position: absolute;
                 top: 0;
-                background: rgba(0,0,0,0.5);
+                background: $secondary;
             }    
         }
     }
