@@ -296,7 +296,7 @@
                             this.$store.dispatch("getData", "banners"), 
                             this.$store.dispatch("getData","promotions"), 
                             this.$store.dispatch("getData", "events"), 
-                            this.$store.dispatch('LOAD_PAGE_DATA', { url: "https://pacificpearl.mallmaverickstaging.com/api/v4/pacificpearl/social.json" })
+                            this.$store.dispatch('LOAD_PAGE_DATA', { url: "https://pacificpearl.mallmaverick.com/api/v4/pacificpearl/social.json" })
                         ]);
                         return results;
                     } catch(e) {
